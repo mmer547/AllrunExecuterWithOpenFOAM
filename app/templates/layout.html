@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        {% if title %}
+        <title>{{ title }}</title>
+        {% else %}
+        <title></title>
+        {% endif %}
+        <!-- Bootstrap -->
+        <script src="/static/js/jquery.js"></script>
+        <script src="/static/js/bootstrap/js/bootstrap.js"></script>
+        <link href="/static/js/bootstrap/css/mybootstrap.css" rel="stylesheet">
+        <script>
+            function OnLinkClick() {
+            var doc = document.getElementsByTagName("iframe")[0].contentWindow.document;
+            }
+        </script>
+    </head>
+    <body>
+        {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            <ul class=flashes>
+            {% for category, message in messages %}
+            <li class="{{ category }}">{{ message }}</li>
+            {% endfor %}
+            </ul>
+        {% endif %}
+        {% endwith %}
+        {% block content %}{% endblock %}
+    </body>
+</html>

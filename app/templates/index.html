@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+{% block content %}
+<nav class="navbar navbar-dark bg-dark navbar-expand-sm">
+    <a href="/" class="navbar-brand">AllrunExecuterWithOpenFOAM</a>
+</nav>
+<div class="container">
+    <form action="/run" method="post" enctype = multipart/form-data>
+        <div class="row">
+            <div class="col-md-4" id="main">
+                <label for="mesh">ファイルアップロード</label>
+                <input type=file name="mesh">
+                <br><br>
+                <button name="runCalc" type="submit" class="btn btn-primary btn-lg"
+                onclick="javascript:document.all.loading.style.display='block';OnLinkClick()">Run
+                </button><br>
+                <br>
+                <div id="loading" style="display:none;">
+                  <img src="/static/img/loading-l-7.gif" />
+                </div>   
+                <br>
+            </div>
+        </div>
+        <a href="/" >トップに戻る</a>
+    </form>
+</div>
+{% endblock %}

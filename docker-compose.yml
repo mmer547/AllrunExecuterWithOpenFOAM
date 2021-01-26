@@ -1,0 +1,11 @@
+version: '3'
+
+services:
+    runopenfoaminput:
+        build: .
+        container_name: runopenfoaminput
+        command: bash -c "python3 /opt/app/main.py"
+        volumes: 
+            - C:/temp:/mnt/windows
+        ports:
+            - "8080:8080"

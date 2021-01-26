@@ -3,26 +3,27 @@
 <nav class="navbar navbar-dark bg-dark navbar-expand-sm">
     <a href="/" class="navbar-brand">AllrunExecuterWithOpenFOAM</a>
 </nav>
-{% with messages = get_flashed_messages(with_categories=true) %}
-{% if messages %}
-    <ul class=flashes>
-    {% for category, message in messages %}
-    <li class="{{ category }}">{{ message }}</li>
-    {% endfor %}
-    </ul>
-{% endif %}
-{% endwith %}
 <div class="container">
     <form action="/run" method="post" enctype = multipart/form-data>
         <div class="row">
-            <div class="col-md-4" id="main">
-                <label for="mesh">ファイルアップロード</label>
+            <div class="col-md-12" id="main">
+                <label for="mesh">ファイルアップロード</label><br>
                 <input type=file name="mesh">
                 <br><br>
                 <button name="runCalc" type="submit" class="btn btn-primary btn-lg"
                 onclick="javascript:document.all.loading.style.display='block';OnLinkClick()">Run
                 </button><br>
                 <br>
+                <hr>
+                {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                    <ul class=flashes>
+                    {% for category, message in messages %}
+                    <li class="{{ category }}">{{ message }}</li>
+                    {% endfor %}
+                    </ul>
+                {% endif %}
+                {% endwith %}
                 <div id="loading" style="display:none;">
                   <img src="/static/img/loading-l-7.gif" />
                 </div>   

@@ -76,6 +76,7 @@ def runOpenFOAM():
         sp.check_call(["bash", "-c",  """. /opt/openfoam7/etc/bashrc;./Allrun"""])
         os.chdir(pwd)
         flash("Success run.", 'info')
+        flash("Please watch "+"case"+timeStomp, 'info')
     except:
         os.chdir(pwd)
         flash("Don't success run.", 'error')

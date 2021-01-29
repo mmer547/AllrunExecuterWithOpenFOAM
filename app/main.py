@@ -6,12 +6,12 @@ app = Flask(__name__)
 app.secret_key = b'mypass'
 
 # ----------------------------------------------------------------------
-# トップページ
+# Top page
 # ----------------------------------------------------------------------
 @app.route('/')
 def index():
     """
-    インデックスページを表示する。
+    Display the index page.
 
     Parameters
     ----------
@@ -19,7 +19,7 @@ def index():
     Returns
     -------
     render_template ： function
-        表示するWebページ
+        Web page to display
 
     Notes
     -----
@@ -28,35 +28,35 @@ def index():
     """
     return render_template(
         'index.html',
-        title="RunOF7-GUI"
+        title="AllrunExecuterWithOpenFOAM"
     )
 
 # ----------------------------------------------------------------------
-# トップページ
+# What happens when you click the Execute Calculation button.
 # ----------------------------------------------------------------------
 @app.route('/run', methods=['POST'])
 def runOpenFOAM():
     """
-    インデックスページを表示する。
+    Copy the inputs to the temp folder.
+    Unzip the inputs.
+    Run the calculation.
 
     Parameters
     ----------
 
     Returns
     -------
-    render_template ： function
-        表示するWebページ
+    redirect(url_for('index')) ： function
+        Return to top page.
 
     Notes
     -----
-        This function is decorated app.route.
-        Routing to '/' page.
+
     """
     import subprocess as sp
     import shutil
     import datetime
 
-    # 一時ファイルの作成
     now = datetime.datetime.now()
     timeStomp = now.strftime('%Y%m%d_%H%M%S')
 
@@ -85,7 +85,7 @@ def runOpenFOAM():
 
 
 # ----------------------------------------------------------------------
-# メインルーチン
+# main routine
 # ----------------------------------------------------------------------
 if __name__ == '__main__':
     installDir = os.getcwd()
